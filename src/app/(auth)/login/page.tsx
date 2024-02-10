@@ -1,9 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-export function Page (){
-    return (
-        <div>
-            {/* Seu componente aqui */}
-        </div>
-    );
-};
+export default function Page() {
+  return <div>Login Page!</div>
+}
