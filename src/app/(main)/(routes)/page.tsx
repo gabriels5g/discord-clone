@@ -1,14 +1,17 @@
-'use client'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-const state = true
-export default function Home() {
+import { UserButton, auth, currentUser } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
+
+export default async function Home() {
+  const { userId } = auth()
+  const user = await currentUser()
+  if(!userId || !user) {
+    redirect("/sign-in")
+  }
+
   return (
     <div>
-      <p className="text-3xl font-bold text-indigo-500">Hello Discord Clone</p>
-      <Button className={cn('bg-indigo-500', state && 'bg-red-500')}>
-        Click me
-      </Button>
+        This is a protected route.
+        <UserButton afterSignOutUrl="/"/>
     </div>
   )
 }
