@@ -1,4 +1,6 @@
+import { ModeToggle } from '@/components/menu-toggle'
 import { UserButton, auth, currentUser } from '@clerk/nextjs'
+import { useTheme } from 'next-themes'
 import { redirect } from 'next/navigation'
 
 export default async function Home() {
@@ -10,6 +12,7 @@ export default async function Home() {
 
   return (
     <div>
+      <ModeToggle />
         This is a protected route.
         <UserButton afterSignOutUrl="/"/>
     </div>
