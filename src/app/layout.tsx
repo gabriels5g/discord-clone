@@ -20,21 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      
-      <body className={cn(
-        font.className, "bg-white dark:bg-[#313338]"
-      )}>
-      <ThemeProvider
+      <html lang="en">
+        <body className={cn(font.className, 'bg-white dark:bg-[#313338]')}>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-        {children}
-        </ThemeProvider>
+            {children}
+          </ThemeProvider>
         </body>
-    </html>
+      </html>
     </ClerkProvider>
   )
 }
