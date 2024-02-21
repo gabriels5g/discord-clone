@@ -3,15 +3,12 @@ import { createUploadthing, type FileRouter } from 'uploadthing/next'
 
 const f = createUploadthing()
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function handleAuth() {
-  const userId = auth()
-
+const handleAuth = () => {
+  const { userId } = auth()
   if (!userId) throw new Error('Unauthorized')
   return { userId }
 }
 
-// FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   serverImage: f({ image: { maxFileSize: '4MB', maxFileCount: 1 } })
     .middleware(() => handleAuth())
